@@ -17,11 +17,15 @@ const FORMAT_DATETIME  = "20060102 15:04:05"
 func main() {
 
     data := make([]string, 10)
-    fmt.Print(data)
+    fmt.Println(data)
 
     s := make([]int, 3)
     s[0] = 12
     s[2] = 3
+    
+    firstname := "Sophea"
+    message   := fmt.Sprintf("My name is %s", firstname)
+    fmt.Println(message)
     
     fmt.Println("My name is Koy Sophea..!")
     t.L()

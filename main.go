@@ -15,6 +15,33 @@ const TELEGRAM_CHAT_ID = ""
 const FORMAT_DATETIME  = "20060102 15:04:05"
 
 func main() {
+    
+    // fmt.Println("Start of program") // reachable
+    // return
+    // fmt.Println("This is unreachable") // unreachable
+
+    // for loop
+    fmt.Println("forloop")
+    for i := 0; i < 5; i++{
+        fmt.Println("i = ", i)
+    }
+
+    for i := range 5 {
+        fmt.Println("i :", i)
+    }
+    
+    fmt.Println("whileloop")
+    // using break keyword
+    for {
+        fmt.Println("Runs forever")
+        break
+    }
+    // number_one := 1 
+    // for {
+    //     if number_one == 1 {
+    //         fmt.Println("It's correct.")
+    //     }
+    // }
 
     data := make([]string, 10)
     fmt.Println(data)
@@ -26,7 +53,15 @@ func main() {
     firstname := "Sophea"
     message   := fmt.Sprintf("My name is %s", firstname)
     fmt.Println(message)
-    
+
+    msg_o := fmt.Sprintf(
+        "User: %s | Age: %d | Active: %t | Score: %.2f | City: %s | Country: %s",
+        "Sophea", 25, true, 98.76, "Phnom Penh", "Cambodia",
+    )
+    fmt.Println(msg_o)
+    // Output: User: Sophea | Age: 25 | Active: true | Score: 98.76 | City: Phnom Penh | Country: Cambodia
+
+
     fmt.Println("My name is Koy Sophea..!")
     t.L()
     t.Info()

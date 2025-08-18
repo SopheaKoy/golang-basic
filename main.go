@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"start/greetings"
-	t "start/syntax"
+	"time"
 )
 
 // constant fixed values
@@ -14,8 +12,31 @@ const TELEGRAM_TOKEN   = ""
 const TELEGRAM_CHAT_ID = ""
 const FORMAT_DATETIME  = "20060102 15:04:05"
 
+func say_hello(){
+    fmt.Println("Hello everyone for the join the every today.")
+}
+
+func worker(id int, ch chan string) {
+    time.Sleep(time.Second)
+    ch <- fmt.Sprintf("Worker %d done", id)
+}
+
 func main() {
+
+    ch := make(chan string)
+
+    for i := 1; i <= 3; i++ {
+        go worker(i, ch)
+    }
     
+    for i := 1; i <= 3; i++ {
+        fmt.Println(<-ch) // wait for each worker
+    }
+
+    go say_hello()
+    time.Sleep(time.Second)
+    fmt.Println("Main function code.")
+
     // fmt.Println("Start of program") // reachable
     // return
     // fmt.Println("This is unreachable") // unreachable
@@ -43,47 +64,47 @@ func main() {
     //     }
     // }
 
-    data := make([]string, 10)
-    fmt.Println(data)
+    // data := make([]string, 10)
+    // fmt.Println(data)
 
-    s := make([]int, 3)
-    s[0] = 12
-    s[2] = 3
+    // s := make([]int, 3)
+    // s[0] = 12
+    // s[2] = 3
     
-    firstname := "Sophea"
-    message   := fmt.Sprintf("My name is %s", firstname)
-    fmt.Println(message)
+    // firstname := "Sophea"
+    // message   := fmt.Sprintf("My name is %s", firstname)
+    // fmt.Println(message)
 
-    msg_o := fmt.Sprintf(
-        "User: %s | Age: %d | Active: %t | Score: %.2f | City: %s | Country: %s",
-        "Sophea", 25, true, 98.76, "Phnom Penh", "Cambodia",
-    )
-    fmt.Println(msg_o)
+    // msg_o := fmt.Sprintf(
+    //     "User: %s | Age: %d | Active: %t | Score: %.2f | City: %s | Country: %s",
+    //     "Sophea", 25, true, 98.76, "Phnom Penh", "Cambodia",
+    // )
+    // fmt.Println(msg_o)
     // Output: User: Sophea | Age: 25 | Active: true | Score: 98.76 | City: Phnom Penh | Country: Cambodia
 
 
-    fmt.Println("My name is Koy Sophea..!")
-    t.L()
-    t.Info()
+    // fmt.Println("My name is Koy Sophea..!")
+    // t.L()
+    // t.Info()
 
     // varible declaration
-    var a string
-    var b int
-    var c bool
+    // var a string
+    // var b int
+    // var c bool
 
-    fmt.Println(a)
-    fmt.Println(b)
-    fmt.Println(c)
+    // fmt.Println(a)
+    // fmt.Println(b)
+    // fmt.Println(c)
 
     // multiple varible 
-    var one, two, three, four  int = 1, 2, 3, 4
+    // var one, two, three, four  int = 1, 2, 3, 4
 
-    fmt.Print(one,   "\n")
-    fmt.Print(two,   "\n")
-    fmt.Print(three, "\n")
-    fmt.Print(four,  "\n")
+    // fmt.Print(one,   "\n")
+    // fmt.Print(two,   "\n")
+    // fmt.Print(three, "\n")
+    // fmt.Print(four,  "\n")
 
-    fmt.Printf("values of one is %v and data type is %T", one, one)
+    // fmt.Printf("values of one is %v and data type is %T", one, one)
 
     // var i   = 15.5
     // var txt = "Hello World!"
@@ -116,39 +137,39 @@ func main() {
     //     productQTY   int
     // )
 
-    is_disable := true
-    fmt.Print(is_disable)
-    is_open := false
-    fmt.Print(is_open)
+    // is_disable := true
+    // fmt.Print(is_disable)
+    // is_open := false
+    // fmt.Print(is_open)
 
     // fmt.Print(productName)
     // fmt.Print(productType)
     // fmt.Print(productPrice)
     // fmt.Print(productQTY)
 
-    log.SetPrefix("===== greetings: ")
-    log.SetFlags(0)
+    // log.SetPrefix("===== greetings: ")
+    // log.SetFlags(0)
 
-    var name = "Sophea"
-    age := 20          
+    // var name = "Sophea"
+    // age := 20          
 
-    fmt.Println("Hello, world!")
-    fmt.Printf("My name is %s and %d years old.\n", name, age)
-    msg := greetings.Hello(name)
-    fmt.Println(msg)
+    // fmt.Println("Hello, world!")
+    // fmt.Printf("My name is %s and %d years old.\n", name, age)
+    // msg := greetings.Hello(name)
+    // fmt.Println(msg)
 
     // return with error
-    msgOne, err:= greetings.Greeting(name)
-    if err != nil{
-        fmt.Println(err)
-    }
-    fmt.Println(msgOne)
+    // msgOne, err:= greetings.Greeting(name)
+    // if err != nil{
+    //     fmt.Println(err)
+    // }
+    // fmt.Println(msgOne)
 
-    log.Println(name)
+    // log.Println(name)
     
-    fmt.Println("===================================")
-    fmt.Println("=========== GOLANG ARRAY ==========")
-    fmt.Println("===================================")
+    // fmt.Println("===================================")
+    // fmt.Println("=========== GOLANG ARRAY ==========")
+    // fmt.Println("===================================")
     
     // persons := []string{
     //     "Sophea",

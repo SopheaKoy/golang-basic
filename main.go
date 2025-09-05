@@ -1,8 +1,8 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"time"
 )
 
 // constant fixed values
@@ -12,51 +12,101 @@ const TELEGRAM_TOKEN   = ""
 const TELEGRAM_CHAT_ID = ""
 const FORMAT_DATETIME  = "20060102 15:04:05"
 
-func say_hello(){
-    fmt.Println("Hello everyone for the join the every today.")
-}
+// goland faction 
+// func add(m int, n int) int {
+//     return m + n;
+// }
 
-func worker(id int, ch chan string) {
-    time.Sleep(time.Second)
-    ch <- fmt.Sprintf("Worker %d done", id)
+// func say_hello(){
+//     fmt.Println("Hello everyone for the join the every today.")
+// }
+
+// func worker(id int, ch chan string) {
+//     time.Sleep(time.Second)
+//     ch <- fmt.Sprintf("Worker %d done", id)
+// }
+
+// struct and json
+type User struct {
+    Id   int    `json:"id"`
+    Name string `json:"name"`
 }
 
 func main() {
 
-    ch := make(chan string)
+    u := User{Id: 1, Name: "Bong Loy"}
 
-    for i := 1; i <= 3; i++ {
-        go worker(i, ch)
-    }
+    // Struct → JSON
+    data, _ := json.Marshal(u)
+    fmt.Println(string(data)) // {"id":1,"name":"Bong Loy"}
+
+    // JSON → Struct
+    json.Unmarshal([]byte(`{"id":2,"name":"Sophea"}`), &u)
+    fmt.Println(u) // {2 Sophea}
+
+
+    // signed integer
+    var a int   = 10;
+    var b int64 = 10000000;
+    var c uint  = 50;
+    var d byte  = 255;
+
+    //  how to convert type
+    var x int   = 10;
+    var y int64 = 20;
+    sum := int64(x) * y;
+    fmt.Println(sum)
+
+    fmt.Println(a, b ,c ,d)
+
+    // Arrays, Slice, Maps
+    var arr[3]int = [3]int{1,2,3}
+    fmt.Println(arr)
+
+    // Slice
+    slice := []int{1,2,3}
+    slice = append(slice, 4)
+    fmt.Println(slice)
+
+    // Maps
+    m := map[string]int{"a": 1, "b":2}
+    fmt.Print(m)
+
+
+    // ch := make(chan string)
+
+    // for i := 1; i <= 3; i++ {
+    //     go worker(i, ch)
+    // }
     
-    for i := 1; i <= 3; i++ {
-        fmt.Println(<-ch) // wait for each worker
-    }
+    // for i := 1; i <= 3; i++ {
+    //     fmt.Println(<-ch) // wait for each worker
+    // }
 
-    go say_hello()
-    time.Sleep(time.Second)
-    fmt.Println("Main function code.")
+    // go say_hello()
+    // time.Sleep(time.Second)
+    // fmt.Println("Main function code.")
 
     // fmt.Println("Start of program") // reachable
     // return
     // fmt.Println("This is unreachable") // unreachable
 
     // for loop
-    fmt.Println("forloop")
-    for i := 0; i < 5; i++{
-        fmt.Println("i = ", i)
-    }
+    // fmt.Println("forloop")
+    // for i := 0; i < 5; i++{
+    //     fmt.Println("i = ", i)
+    // }
 
-    for i := range 5 {
-        fmt.Println("i :", i)
-    }
+    // for i := range 5 {
+    //     fmt.Println("i :", i)
+    // }
     
-    fmt.Println("whileloop")
-    // using break keyword
-    for {
-        fmt.Println("Runs forever")
-        break
-    }
+    // fmt.Println("whileloop")
+    // // using break keyword
+    // for {
+    //     fmt.Println("Runs forever")
+    //     break
+    // }
     // number_one := 1 
     // for {
     //     if number_one == 1 {

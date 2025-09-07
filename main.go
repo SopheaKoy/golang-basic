@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // constant fixed values
@@ -32,7 +33,32 @@ type User struct {
     Name string `json:"name"`
 }
 
+
+func display_number() {
+    for i := 1; i <= 7; i++ {
+        fmt.Println("show the number of i :", i)
+        time.Sleep(500 * time.Millisecond)
+    }
+}
+
 func main() {
+    go display_number()
+    go fmt.Println("This runs in a goroutine")
+    fmt.Println("Main function continues...!!!")
+
+    // pointer
+    g := 10
+    h := &g
+    fmt.Println(*h)
+
+    is_active := true
+    if 10 > 5 {
+        is_active = false
+    } else {
+        is_active = true
+    }
+
+    fmt.Println(is_active)
 
     u := User{Id: 1, Name: "Bong Loy"}
 
@@ -68,7 +94,7 @@ func main() {
     slice = append(slice, 4)
     fmt.Println(slice)
 
-    // Maps
+    // Maps is using for
     m := map[string]int{"a": 1, "b":2}
     fmt.Print(m)
 

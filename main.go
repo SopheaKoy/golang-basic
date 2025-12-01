@@ -3,10 +3,14 @@ package main
 // how to alias when import
 import (
 	"fmt"
+	gettings "start/greet"
 	v "start/variable"
 )
 
 func main() {
+
+	msg, _ := gettings.Hello("Seav mey")
+	fmt.Println(msg)
 
 	// Input
 	var name string
